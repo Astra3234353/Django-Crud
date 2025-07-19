@@ -3,8 +3,8 @@
 {% block content %}
 <h1>Tasks Pending</h1>
 {% for task in tasks %}
-  <li>
-    <a href="{% url 'task_detail' task.id %}">
+  <li style="padding: 20px 5px;">
+    <a href="{% url 'task_detail' task.id %}" style="text-decoration: none; color: inherit;">
       {% if task.important %}
       <strong>{{task.title}}</strong>
       {% else %}
@@ -12,6 +12,8 @@
       {% endif %}
       <p>{{task.description}}</p>
       <p>{{task.user.username}}</p>
+
+      <p>{{task.datecompleted|date:'M j Y:i'}}</p>
     </a>
   </li>
 {% endfor %}
