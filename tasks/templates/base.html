@@ -8,16 +8,84 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
 </head>
 
+<style>
+  .header__checkbox {
+    display: none;
+  }
+
+  @media (max-width: 985px) {
+    .header__nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #212529;
+      /* mismo color que bg-dark */
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  .header__checkbox:checked~.header__nav {
+    transform: translateX(0);
+  }
+
+  .navbar-toggler-icon {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .nav-toggle-label {
+    display: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .nav-toggle-label {
+      display: block;
+    }
+
+    .header__nav {
+      position: absolute;
+      top: 56px;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar-nav {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .collapse {
+      display: block !important;
+      /* Necesario para evitar Bootstrap JS */
+    }
+  }
+</style>
+
 <body>
 
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark position-relative">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Django App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+      <!-- Input Checkbox toggle -->
+      <input type="checkbox" id="nav-toggle" class="header__checkbox">
+
+      <!-- Label con "hamburguesa" -->
+      <label for="nav-toggle" class="nav-toggle-label">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </label>
+
+      <!-- Menú navegable -->
+      <div class="header__nav collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a href="/" class="nav-link">Home</a>

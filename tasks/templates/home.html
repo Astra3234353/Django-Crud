@@ -5,13 +5,17 @@
 <main class=" container py-5">
   <section class="card card-body ">
     <h1 class="display-1 text-center">Django App</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nesciunt veniam amet ea, alias fugit tenetur
+    <p class="mt-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nesciunt veniam amet ea, alias fugit tenetur
       inventore, possimus quidem officia, placeat necessitatibus et provident eligendi ratione vero explicabo enim
       commodi.</p>
+
+    {% if user.is_authenticated %}
+    {% else %}
     <div class="text-center">
       <a class="btn btn-secondary" href="/signin">Signin</a>
       <a class="btn btn-dark" href="/signup">Signup</a>
     </div>
+    {% endif %}
   </section>
 </main>
 {% endblock %}
